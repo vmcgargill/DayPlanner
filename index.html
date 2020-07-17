@@ -19,19 +19,40 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Assets/style.css" />
-    <title>Work Day Scheduler</title>
+    <title>Daily Scheduler</title>
+    
   </head>
 
   <body>
     <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>
+      <h1 class="display-3">Daily Scheduler</h1>
+      <p id="CurrentDateP" class="lead"></p>
     </header>
+    <!-- Time Blocks Container -->
     <div class="container">
-      <!-- Timeblocks go here -->
+      <ul id="TimeBlocksList">
+      </ul>
     </div>
-
+    <!-- Footer -->
+    <footer class="PlannerFooter">
+      <p>
+          <a class="footerli">&copy; 2020 Vincent McGargill</a>
+        </p>
+        <p>
+        Email: <a class="footerli" href="mailto:vincentmcgargill@gmail.com">vincentmcgargill@gmail.com</a>
+        </p>
+        <p>
+          <a href="https://github.com/vmcgargill" class="footerli">GitHub</a>
+        </p>
+        <p>
+          <a href="https://www.linkedin.com/in/vincent-mcgargill-b6244660/" class="footerli">LinkedIn</a>
+        </p>
+        <p>
+          <a href="https://vmcgargill.github.io/portfolio/" class="footerli">GitHub Portfolio</a>
+        </p>
+    </footer>
+    <!-- Scripts -->
+    <script src="lib/moment/moment.js"></script>
     <script src="Assets/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

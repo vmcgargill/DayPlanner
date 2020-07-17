@@ -4,13 +4,8 @@ body {
   line-height: 1;
 }
 
-textarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
+.container {
+  margin: auto;
 }
 
 .jumbotron {
@@ -21,13 +16,9 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+/* //////////////////////////////// */
 .description{
   white-space: pre-wrap;
-}
-
-.time-block{
-  text-align: center;
-  border-radius: 15px;
 }
 
 .row {
@@ -36,11 +27,41 @@ textarea{
   border-top: 1px solid white;;
 }
 
+.time-block{
+  text-align: center;
+  border-radius: 15px;
+}
+
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  width: 50px;
 }
+
+textarea{
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #000000;
+  border-left: 1px solid black;
+  padding: 10px;
+  width: 75%;
+}
+
+.saveBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #06AED5;
+  color: white;
+}
+
+.saveBtn i:hover {
+  font-size: 20px;
+  transition: all .3s ease-in-out;
+}
+/* //////////////////////////////// */
 
 .past {
   background-color: #d3d3d3;
@@ -57,15 +78,18 @@ textarea{
   color: white;
 }
 
-.saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06AED5;
-  color: white;
+.PlannerFooter {
+  color: white; 
+  background-color: rgb(30, 30, 97);
+  text-align: center; 
+  padding: 30px;
+  box-shadow: 0 0 15px 2px black;
+  border-radius: 30px 30px 30px 30px;
+  font-family: 'Open Sans', sans-serif;
+  margin: 1%;
 }
 
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all .3s ease-in-out;
+.footerli {
+  color: white;
+  font-size: 15px;
 }
