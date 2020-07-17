@@ -6,18 +6,10 @@ function GetTime() {
     var CurrentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
     CurrentDateP.innerHTML = CurrentDate;
     CurrentDateP.innerHTML = "Current date: " + CurrentDate;
+
+    var CurrentHour = moment().format('h a');
 }
 setInterval(GetTime, 1000);
-
-
-
-// Get Current Time and display it every second
-function GetHour() {
-    var CurrentHour = moment().format('h a');
-    console.log(CurrentHour);
-}
-setInterval(GetHour, 1000);
-
 
 // Temporary timeblocks that need to be removed later
 var timeblocks = [
@@ -32,7 +24,6 @@ var timeblocks = [
     "5pm"
 ]
 
-GetHour()
 GenerateTimeBlocks();
 
 function GenerateTimeBlocks() {
@@ -53,6 +44,8 @@ function GenerateTimeBlocks() {
 
         var textarea = document.createElement("textarea");
         textarea.placeholder = "Enter your text here";
+        textarea.setAttribute("class", "description");
+        textarea.setAttribute("id", i);
         // Add if statement here
         textarea.classList.add("past");
         row.appendChild(textarea);
@@ -60,8 +53,21 @@ function GenerateTimeBlocks() {
         var saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
         saveBtn.classList.add("saveBtn");
-        // Event listner does not work for some reason!
-        // saveBtn.addEventListener("click", alert("The index is: " + i + ". The hour is: " + RowHour));
+        saveBtn.setAttribute("value", i);
+        saveBtn.addEventListener("click", function(event) {
+            var UpdateButton = event.target;
+            var HourBlockNotes  = document.getElementsByClassName("description");
+            var TextValue = "Did not change";
+            for (var b = 0; b < HourBlockNotes.length; b++) {
+                var CurrentBlock = HourBlockNotes[b];
+                if (CurrentBlock.id = UpdateButton.value) {
+                    // Function is not able to grab value
+                    // TextValue = $(CurrentBlock.value).val();;
+                }
+            }
+            console.log()
+            alert("Text value is: " + TextValue + ". Current block is: " + CurrentBlock.id + ". Button value is: " + UpdateButton.value);
+        });
         row.appendChild(saveBtn);
     }
 }
