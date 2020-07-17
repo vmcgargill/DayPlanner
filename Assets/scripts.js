@@ -12,7 +12,7 @@ function GetTime() {
 setInterval(GetTime, 1000);
 
 // Temporary timeblocks that need to be removed later
-var timeblocks = [
+let timeblocks = [
     "9am",
     "10am",
     "11am",
@@ -30,7 +30,6 @@ function GenerateTimeBlocks() {
     TimeBlocksList.innerHTML = "";
 
     for (var i = 0; i < timeblocks.length; i++) {
-        // Change this to timeblocks you get from moment.js
         var RowHour = timeblocks[i];
 
         var row = document.createElement("div");
@@ -46,28 +45,28 @@ function GenerateTimeBlocks() {
         textarea.placeholder = "Enter your text here";
         textarea.setAttribute("class", "description");
         textarea.setAttribute("id", i);
-        // Add if statement here
-        textarea.classList.add("past");
         row.appendChild(textarea);
 
         var saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
         saveBtn.classList.add("saveBtn");
         saveBtn.setAttribute("value", i);
-        saveBtn.addEventListener("click", function(event) {
-            var UpdateButton = event.target;
-            var HourBlockNotes  = document.getElementsByClassName("description");
-            var TextValue = "Did not change";
-            for (var b = 0; b < HourBlockNotes.length; b++) {
-                var CurrentBlock = HourBlockNotes[b];
-                if (CurrentBlock.id = UpdateButton.value) {
-                    // Function is not able to grab value
-                    // TextValue = $(CurrentBlock.value).val();;
-                }
-            }
-            console.log()
-            alert("Text value is: " + TextValue + ". Current block is: " + CurrentBlock.id + ". Button value is: " + UpdateButton.value);
-        });
         row.appendChild(saveBtn);
     }
 }
+
+$(document).on('click','.saveBtn',function(){
+    var SaveBtnValue = $(this).val();
+    var desctiption = document.getElementById(SaveBtnValue).value;
+    localStorage.setItem(SaveBtnValue, desctiption);
+});
+
+function GetStoredNotes() {
+    for (var i = 0; i < timeblocks.length; i++) {
+        var GetStoreNotes = localStorage.getItem(i);
+        var TextAreas = document.getElementById(i);
+        TextAreas.innerText = GetStoreNotes;
+    }
+}
+
+GetStoredNotes();
