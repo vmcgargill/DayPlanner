@@ -64,6 +64,21 @@ $(document).on('click','.saveBtn',function(){
     localStorage.setItem(SaveBtnValue, desctiption);
 });
 
+// The clear history function clears all of the text areas and restores them to their defualts.
+function ClearHistory() {
+    var ConfirmClearHistory = confirm("Are you sure you want to permanently erase all of your notes?")
+    var Descriptions = document.getElementsByClassName('description')
+
+    if (ConfirmClearHistory === true) {
+        for (var i = 0; i < Descriptions.length; i++) {
+            localStorage.removeItem(i);
+        }
+        Descriptions.innerText = "";
+        GenerateTimeBlocks();
+        UpdateTimeBlocks();
+    }
+}
+
 // The get stroed notes function that gets the stored notes and loads them when the page is loaded.
 function GetStoredNotes() {
     for (var i = 0; i < timeblocks.length; i++) {

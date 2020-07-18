@@ -12,6 +12,9 @@ The generate time block function creates a set of time blocks from each object f
 ## $(document).on('click','.saveBtn',function()
 This particular function takes .saveBtn class and creates a function for each button element in that class. Each button has an index value that is the same as the ID of the corresponding textarea. It matches the button value with the textarea ID in order to locate which text area we are trying to save, then saves the textarea value by using localstorage.setItem and sets the item with the matching ID/save button value. That way if we click the button, it saves the value of the corresponding text area locally. However, this function only saves the teaxtarea value, it does not load the textarea value. So if we refresh the browser in this state, all of the text disapears. To load all of the textarea values, we are going to have to creat an additional function and call it the Get Stored Notes function.
 
+## ClearHistory()
+The clear history function searches through all of the description text areas by using a for toop, and removes the text in those areas. This gives the user the ability to quickly refresh their history if they have a bunch of notes on their they don't want. The function then clears the text areas, reloads the timeblocks, and then re-updates them to make it seemless to the end user
+
 ## GetStoredNotes()
 The get stored notes function loads all of the stored notes that the user has saved for each time block. It accomplishes this by running a for loop that uses the localstorage.getItem function and checks all of the timeblocks[] indexes for any values stores. Then it inserts that text into their corresponding text areas based on the text area ID. This function loads when the page is loaded or refreshed so it loads the old notes every time.
 

@@ -50,6 +50,13 @@ textarea{
   width: 75%;
 }
 
+.clearBtn {
+  border-left: 1px solid black;
+  border-radius: 15px;
+  background-color: #06AED5;
+  color: white;
+}
+
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
@@ -58,7 +65,7 @@ textarea{
   color: white;
 }
 
-.saveBtn:hover {
+.saveBtn:hover, .clearBtn:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
