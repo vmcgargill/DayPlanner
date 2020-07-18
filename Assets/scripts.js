@@ -9,7 +9,7 @@ function GetTime() {
 }
 setInterval(GetTime, 1000);
 
-// Temporary timeblocks that need to be removed later
+// Temporary timeblocks
 let timeblocks = [
     "9 am",
     "10 am",
@@ -26,8 +26,8 @@ let timeblocks = [
     "9 pm"
 ]
 
+// Generate all the time blocks from the tomeblock array and display them
 GenerateTimeBlocks();
-
 function GenerateTimeBlocks() {
     TimeBlocksList.innerHTML = "";
 
@@ -57,16 +57,14 @@ function GenerateTimeBlocks() {
     }
 }
 
-
-
-// setInterval(GenerateTimeBlocks, 1000);
-
+// The save button function that allows the user to save their notes.
 $(document).on('click','.saveBtn',function(){
     var SaveBtnValue = $(this).val();
     var desctiption = document.getElementById(SaveBtnValue).value;
     localStorage.setItem(SaveBtnValue, desctiption);
 });
 
+// The get stroed notes function that gets the stored notes and loads them when the page is loaded.
 function GetStoredNotes() {
     for (var i = 0; i < timeblocks.length; i++) {
         var GetStoreNotes = localStorage.getItem(i);
@@ -74,16 +72,16 @@ function GetStoredNotes() {
         TextAreas.innerText = GetStoreNotes;
     }
 }
-
 GetStoredNotes();
 
+// The update time block function that updates the color of the blocks.
 function UpdateTimeBlocks() {
     var GetCurrentHR = moment().format('h a');
     var CurrentHour = moment(GetCurrentHR, 'h a');
     var Descriptions = document.getElementsByClassName('description')
     
     for (var i = 0; i < Descriptions.length; i++) {
-        var TimeBlock = moment(timeblocks[i], 'h a'); // 1pm
+        var TimeBlock = moment(timeblocks[i], 'h a');
         if (CurrentHour.isSame(TimeBlock) === true) {
             Descriptions[i].classList.add('present')
             Descriptions[i].classList.remove('future')
@@ -99,7 +97,5 @@ function UpdateTimeBlocks() {
         }
     }
 } 
-
 UpdateTimeBlocks()
-
 setInterval(UpdateTimeBlocks, 10000);
