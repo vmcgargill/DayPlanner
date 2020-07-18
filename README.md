@@ -22,7 +22,7 @@ The get stored notes function loads all of the stored notes that the user has sa
 The updtae timeblock function updates the colors of the time blocks based on weather the time block is in the past, present, or future. For example, if the current time is 10am, it will display the 9am block as gray, the 10am block as red, and the 11am block and all other future blocks as green. The function checks each active time block and uses anf if statement to see if that time block is in the past, present, or future. This is when Moment.js comes into play, it takes the format from the timeblock array and converts it into a time format, which can be used to compare with the current time the machine is on.
 
 ## TODO: Replace this gif in daytime.
-![day planner demo](demo.gif)
+![day planner demo](05-day-planner-example.gif)
 
 - - -
 © 2020 Vincent McGargill. All Rights Reserved.
