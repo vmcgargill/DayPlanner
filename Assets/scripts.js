@@ -6,22 +6,24 @@ function GetTime() {
     var CurrentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
     CurrentDateP.innerHTML = CurrentDate;
     CurrentDateP.innerHTML = "Current date: " + CurrentDate;
-
-    var CurrentHour = moment().format('h a');
 }
 setInterval(GetTime, 1000);
 
 // Temporary timeblocks that need to be removed later
 let timeblocks = [
-    "9am",
-    "10am",
-    "11am",
-    "12pm",
-    "1pm",
-    "2pm",
-    "3pm",
-    "4pm",
-    "5pm"
+    "9 am",
+    "10 am",
+    "11 am",
+    "12 pm",
+    "1 pm",
+    "2 pm",
+    "3 pm",
+    "4 pm",
+    "5 pm",
+    "6 pm",
+    "7 pm",
+    "8 pm",
+    "9 pm"
 ]
 
 GenerateTimeBlocks();
@@ -55,6 +57,10 @@ function GenerateTimeBlocks() {
     }
 }
 
+
+
+// setInterval(GenerateTimeBlocks, 1000);
+
 $(document).on('click','.saveBtn',function(){
     var SaveBtnValue = $(this).val();
     var desctiption = document.getElementById(SaveBtnValue).value;
@@ -70,3 +76,30 @@ function GetStoredNotes() {
 }
 
 GetStoredNotes();
+
+function UpdateTimeBlocks() {
+    var GetCurrentHR = moment().format('h a');
+    var CurrentHour = moment(GetCurrentHR, 'h a');
+    var Descriptions = document.getElementsByClassName('description')
+    
+    for (var i = 0; i < Descriptions.length; i++) {
+        var TimeBlock = moment(timeblocks[i], 'h a'); // 1pm
+        if (CurrentHour.isSame(TimeBlock) === true) {
+            Descriptions[i].classList.add('present')
+            Descriptions[i].classList.remove('future')
+            Descriptions[i].classList.remove('past')
+        } else if (CurrentHour.isBefore(TimeBlock) === true) {
+            Descriptions[i].classList.add('future')
+            Descriptions[i].classList.remove('past')
+            Descriptions[i].classList.remove('present')
+        } else if (CurrentHour.isBefore(TimeBlock) === false) {
+            Descriptions[i].classList.add('past')
+            Descriptions[i].classList.remove('future')
+            Descriptions[i].classList.remove('present')
+        }
+    }
+} 
+
+UpdateTimeBlocks()
+
+setInterval(UpdateTimeBlocks, 10000);
