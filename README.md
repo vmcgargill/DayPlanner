@@ -1,5 +1,5 @@
 # 05DayPlanner
-5th Homework Assignment for bootcamp.
+A day planner that have time blocks that change colors based on the time of day.
 
 URL: https://vmcgargill.github.io/05DayPlanner/
 
